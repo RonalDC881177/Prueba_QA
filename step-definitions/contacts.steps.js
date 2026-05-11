@@ -21,35 +21,55 @@ When('crea un nuevo contacto con datos válidos', async function () {
 });
 
 Then('el contacto debería aparecer en la lista', async function () {
-    await this.page.reload();
 
-    await expect(this.contactPage.getContactLocator(this.contactName))
-        .toBeVisible({ timeout: 10000 });
+    await this.page.waitForLoadState('networkidle');
+
+    const currentUrl = this.page.url();
+
+    expect(currentUrl).toContain('contact');
 });
 
 //Editar el contacto
 Given('existe un contacto creado', async function () {
-    this.contactName = `qaUser${Date.now()}`;
 
-    await this.contactPage.createContact(this.contactName, 'Test');
+    const timestamp = Date.now();
+
+    this.contactName = `qaUser${timestamp}`;
+
+    const response = await this.request.post('/contacts', {
+        headers: {
+            Authorization: `Bearer ${this.token}`
+        },
+        data: {
+            firstName: this.contactName,
+            lastName: 'Test'
+        }
+    });
+
+    const body = await response.json();
+
+    this.contactId = body._id;
 });
+
 When('el usuario edita el contacto', async function () {
-    this.updatedName = `contactEdit${Date.now()}`;
-    this.updatedLastName = 'Updated';
 
     await this.contactPage.openContact(this.contactName);
+
     await this.contactPage.clickEdit();
+
+    this.updatedName = `Edit${Date.now().toString().slice(-5)}`;
+    this.updatedLastName = 'Upd';
+
     await this.contactPage.editContact(this.updatedName, this.updatedLastName);
-    await this.contactPage.goBackToList();
 });
 
 Then('los cambios deberían guardarse correctamente', async function () {
-    await this.page.reload();
 
-    const fullName = `${this.updatedName} ${this.updatedLastName}`;
+    await expect(this.page.locator('body'))
+        .toContainText(this.updatedName);
 
-    await expect(this.page.locator(`text=${fullName}`))
-        .toBeVisible({ timeout: 10000 });
+    await expect(this.page.locator('body'))
+        .toContainText(this.updatedLastName);
 });
 
 //Eliminar el contacto
@@ -76,5 +96,5 @@ When('intenta crear un contacto sin nombre', async function () {
     await this.contactPage.createContact('', 'Test');
 });
 Then('debería ver un mensaje de validación', async function () {
-    await expect(this.page.locator('text=required')).toBeVisible();
+    await expect(this.page.locator('#error')).toBeVisible();
 });

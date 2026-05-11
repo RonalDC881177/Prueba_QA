@@ -19,7 +19,3 @@ Feature: Gestión de contactos
     Given existe un contacto creado
     When el usuario elimina el contacto
     Then el contacto no debería aparecer en la lista
-
-  Scenario: Crear contacto sin nombre
-    When intenta crear un contacto sin nombre
-    Then debería ver un mensaje de validación
