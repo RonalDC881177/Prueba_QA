@@ -13,7 +13,7 @@ Given('el usuario tiene un token válido', async function () {
     const body = await response.json();
     this.token = body.token;
 
-    this.contactName = `API${Date.now()}`;
+    this.contactName = `apiContact${Date.now()}`;
 });
 
 //Creas contacto desde la API

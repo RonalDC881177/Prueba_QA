@@ -3,7 +3,10 @@ const { chromium, request } = require('@playwright/test');
 const LoginPage = require('../pages/login.page');
 
 Before(async function () {
-    this.browser = await chromium.launch({ headless: false });
+    this.browser = await chromium.launch({
+        headless: false,
+        slowMo: 500
+    });
 
     this.page = await this.browser.newPage();
 
@@ -12,11 +15,6 @@ Before(async function () {
     });
 
     this.loginPage = new LoginPage(this.page);
-
-    this.browser = await chromium.launch({ 
-    headless: false,
-    slowMo: 500
-});
 });
 
 After(async function () {

@@ -15,7 +15,7 @@ Given('el usuario está autenticado', async function () {
 
 //Crear contacto
 When('crea un nuevo contacto con datos válidos', async function () {
-    this.contactName = `User${Date.now()}`;
+    this.contactName = `qaUser${Date.now()}`;
 
     await this.contactPage.createContact(this.contactName, 'Test');
 });
@@ -29,12 +29,12 @@ Then('el contacto debería aparecer en la lista', async function () {
 
 //Editar el contacto
 Given('existe un contacto creado', async function () {
-    this.contactName = `User${Date.now()}`;
+    this.contactName = `qaUser${Date.now()}`;
 
     await this.contactPage.createContact(this.contactName, 'Test');
 });
 When('el usuario edita el contacto', async function () {
-    this.updatedName = `Edit${Date.now()}`;
+    this.updatedName = `contactEdit${Date.now()}`;
     this.updatedLastName = 'Updated';
 
     await this.contactPage.openContact(this.contactName);
