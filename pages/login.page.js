@@ -11,14 +11,14 @@ class LoginPage {
         await this.page.waitForLoadState('networkidle');
     }
 
-    async login(user, pass) {
-        await this.page.fill(this.email, user);
-        await this.page.fill(this.password, pass);
+    async login(email, password) {
+        const emailInput = this.page.locator(this.email);
+        const passwordInput = this.page.locator(this.password);
 
-        const btn = this.page.locator(this.btnLogin);
+        await emailInput.fill(email);
+        await passwordInput.fill(password);
 
-        await btn.waitFor({ state: 'visible' });
-        await btn.click();
+        await this.page.getByRole('button', { name: /submit/i }).click();
     }
 }
 

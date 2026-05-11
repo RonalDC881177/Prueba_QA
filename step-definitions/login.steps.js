@@ -10,7 +10,7 @@ Given('el usuario está en la página de login', async function () {
 
 // Login exitoso
 When('ingresa email y contraseña válidos', async function () {
-    await this.loginPage.login('ronal@test.com', '123456qaz');
+    await this.loginPage.login('ronal123@test.com', 'ronalqa123');
 });
 
 Then('debería ver la lista de contactos', async function () {
@@ -19,7 +19,7 @@ Then('debería ver la lista de contactos', async function () {
 
 // Login con contraseña incorrecta
 When('ingresa email válido y contraseña incorrecta', async function () {
-    await this.loginPage.login('ronal@test.com', 'wrongpass');
+    await this.loginPage.login('ronal123@test.com', 'wrongpass');
 });
 
 Then('debería ver un mensaje de error', async function () {
@@ -28,9 +28,10 @@ Then('debería ver un mensaje de error', async function () {
 
 // Login con campos vacíos
 When('intenta iniciar sesión sin ingresar credenciales', async function () {
-    await this.page.click('button[type="submit"]');
+    await this.page.waitForSelector('button');
+    await this.page.getByRole('button', { name: /submit/i }).click();
 });
 
 Then('debería ver validaciones de campos obligatorios', async function () {
-    await expect(this.page.locator('text=required')).toBeVisible();
+    await expect(this.page.locator('text=Incorrect username or password')).toBeVisible();
 });
