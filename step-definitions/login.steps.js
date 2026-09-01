@@ -10,16 +10,16 @@ Given('el usuario está en la página de login', async function () {
 
 // Login exitoso
 When('ingresa email y contraseña válidos', async function () {
-    await this.loginPage.login('ronal123@test.com', 'ronalqa123');
+    await this.loginPage.login('admin', 'admin');
 });
 
-Then('debería ver la lista de contactos', async function () {
-    await expect(this.page).toHaveURL(/contactList/);
+Then('debería acceder al dashboard del administrador', async function () {
+    await expect(this.page).toHaveURL(/\/admin\//);
 });
 
 // Login con contraseña incorrecta
 When('ingresa email válido y contraseña incorrecta', async function () {
-    await this.loginPage.login('ronal123@test.com', 'wrongpass');
+    await this.loginPage.login('admin', 'wrongpass');
 });
 
 Then('debería ver un mensaje de error', async function () {
@@ -28,8 +28,8 @@ Then('debería ver un mensaje de error', async function () {
 
 // Login con campos vacíos
 When('intenta iniciar sesión sin ingresar credenciales', async function () {
-    await this.page.waitForSelector('button');
-    await this.page.getByRole('button', { name: /submit/i }).click();
+    //await this.page.waitForSelector('button');
+    await this.loginPage.clickLogin();
 });
 
 Then('debería ver validaciones de campos obligatorios', async function () {

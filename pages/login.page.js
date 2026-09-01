@@ -1,24 +1,25 @@
 class LoginPage {
     constructor(page) {
         this.page = page;
-        this.email = '#email';
-        this.password = '#password';
-        this.btnLogin = '#submit';
+
+        this.username = 'input[name="username"]';
+        this.password = 'input[name="password"]';
+        this.btnLogin = 'button[type="submit"]';
     }
 
     async goTo() {
-        await this.page.goto('https://thinking-tester-contact-list.herokuapp.com/');
+        await this.page.goto('https://room-rent.xyz/portal/login');
         await this.page.waitForLoadState('networkidle');
     }
 
-    async login(email, password) {
-        const emailInput = this.page.locator(this.email);
-        const passwordInput = this.page.locator(this.password);
+    async login(username, password) {
+        await this.page.locator(this.username).fill(username);
+        await this.page.locator(this.password).fill(password);
+        await this.page.locator(this.btnLogin).click();
+    }
 
-        await emailInput.fill(email);
-        await passwordInput.fill(password);
-
-        await this.page.getByRole('button', { name: /submit/i }).click();
+    async clickLogin() {
+        await this.page.locator(this.btnLogin).click();
     }
 }
 

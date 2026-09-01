@@ -6,7 +6,7 @@ Feature: Autenticación de usuarios
   Scenario: Login exitoso
     Given el usuario está en la página de login
     When ingresa email y contraseña válidos
-    Then debería ver la lista de contactos
+    Then debería acceder al dashboard del administrador
 
   Scenario: Login con contraseña incorrecta
     Given el usuario está en la página de login
