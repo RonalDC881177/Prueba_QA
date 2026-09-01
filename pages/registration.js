@@ -13,8 +13,7 @@ class LoginPage {
         this.btnCreateAccount = 'button:has-text("Crear cuenta")';
 
         // Mensajes
-        this.successMessage =
-            'text=Cuenta creada. Revisa tu correo para activarla.';
+        this.successMessage = 'text=Cuenta creada. Revisa tu correo para activarla.';
     }
 
     async goTo() {
@@ -22,36 +21,31 @@ class LoginPage {
         await this.page.waitForLoadState('networkidle');
     }
 
-    // LOGIN
     async login(username, password) {
         await this.page.locator(this.username).fill(username);
         await this.page.locator(this.password).fill(password);
-        await this.page.locator(this.btnLogin).click();
+        await this.btnLogin.click();
     }
 
     async clickLogin() {
-        await this.page.locator(this.btnLogin).click();
+        await this.btnLogin.click();
     }
 
-    // REGISTRO
     async goToRegister() {
         await this.page.locator(this.btnRegisterTab).click();
     }
 
-    async fillUsername(username) {
+    async register(username, email, password) {
         await this.page.locator(this.username).fill(username);
-    }
-
-    async fillEmail(email) {
         await this.page.locator(this.email).fill(email);
-    }
-
-    async fillPassword(password) {
         await this.page.locator(this.password).fill(password);
+        await this.btnCreateAccount.click();
     }
 
-    async clickCreateAccount() {
-        await this.page.locator(this.btnCreateAccount).click();
+    async isRegistrationSuccessful() {
+        return await this.page
+            .locator(this.successMessage)
+            .isVisible();
     }
 }
 
