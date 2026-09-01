@@ -11,7 +11,7 @@ Before(async function () {
     this.page = await this.browser.newPage();
 
     this.request = await request.newContext({
-        baseURL: 'https://thinking-tester-contact-list.herokuapp.com'
+        baseURL: 'https://room-rent.xyz/portal'
     });
 
     this.loginPage = new LoginPage(this.page);
