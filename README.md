@@ -1,17 +1,47 @@
-# Prueba QA
+# 1. Prerrequisitos
+La persona que clone el repositorio debería tener:
 
-## Objetivo
-Automatizar pruebas funcionales para la aplicación de gestión de contactos utilizando Playwright y Cucumber.
+Node.js instalado.
+npm incluido con Node.js.
+Git instalado.
+Acceso al proyecto/aplicación que se va a probar.
+Credenciales de prueba para el login.
+URL del ambiente donde se ejecutarán las pruebas.
+Puedes verificar las instalaciones con:
+- node --version
+- npm --version
+- git --version
 
-## Cobertura
-Las pruebas incluyen:
+# 2. Crear el proyecto de Playwright
 
-- Login exitoso y fallido
-- Creación de contactos
-- Edición de contactos
-- Eliminación de contactos
-- Validaciones básicas
-- Integración UI + API
+Si todavía no tienes configurado el proyecto:
 
-## Estrategia
-Se priorizaron pruebas API y flujos críticos de UI para asegurar estabilidad en los procesos principales de la aplicación.
+- npm init playwright@latest
+
+Durante el asistente puedes seleccionar:
+JavaScript o TypeScript
+tests
+GitHub Actions: Yes/No
+Install Playwright browsers: Yes
+
+# 3. Instalar los navegadores
+
+Si Playwright no los instaló automáticamente:
+
+- npx playwright install
+
+En Linux, si necesitas instalar también las dependencias del sistema:
+
+- npx playwright install --with-deps
+
+# 4 Ejecutar las pruebas
+Para ejecutar todos los tests:
+
+- npx playwright test
+
+Para ejecutar específicamente uno por ejemplo login:
+
+- npx playwright test tests/login.spec.ts
+
+
+
