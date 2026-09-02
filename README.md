@@ -43,5 +43,7 @@ Para ejecutar específicamente uno por ejemplo login:
 
 - npx playwright test tests/login.spec.ts
 
-
+Para forzar evidencia nuevamente de un escenario ya registrado:
+$env:RECAPTURAR_EVIDENCIAS='true'
+npm.cmd test
 
