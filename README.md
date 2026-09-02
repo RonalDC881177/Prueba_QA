@@ -15,3 +15,7 @@ Las pruebas incluyen:
 
 ## Estrategia
 Se priorizaron pruebas API y flujos críticos de UI para asegurar estabilidad en los procesos principales de la aplicación.
+
+Para forzar evidencia nuevamente de un escenario ya registrado:
+$env:RECAPTURAR_EVIDENCIAS='true'
+npm.cmd test
