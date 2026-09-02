@@ -83,7 +83,7 @@ Before(async function ({ pickle }) {
     this.stepNumber = 0;
 
     this.request = await request.newContext({
-        baseURL: 'https://room-rent.xyz/portal'
+        baseURL: 'https://room-rent.xyz/portal/'
     });
 
     this.loginPage = new LoginPage(this.page);
