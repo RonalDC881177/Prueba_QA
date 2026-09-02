@@ -1,7 +1,7 @@
 Feature: Autenticación de usuarios
   Como usuario de la aplicación
   Quiero iniciar sesión
-  Para acceder a mis contactos
+  Para acceder al dashboard
 
   Scenario: Login exitoso
     Given el usuario está en la página de login
