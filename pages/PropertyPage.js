@@ -16,6 +16,22 @@ class PropertyPage {
 
         await this.page.waitForLoadState('networkidle');
     }
+
+    async goToLandlordPanel() {
+        await this.page
+            .getByText('Panel Arrendador', { exact: true })
+            .click();
+
+        await this.page.waitForLoadState('networkidle');
+    }
+
+    async goToPublishProperty() {
+        await this.page
+            .getByText('Publicar nuevo', { exact: true })
+            .click();
+
+        await this.page.waitForLoadState('networkidle');
+    }
 }
 
 module.exports = PropertyPage;

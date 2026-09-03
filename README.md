@@ -37,11 +37,11 @@ En Linux, si necesitas instalar también las dependencias del sistema:
 # 4 Ejecutar las pruebas
 Para ejecutar todos los tests:
 
-- npx playwright test
+- npx cucumber-js
 
-Para ejecutar específicamente uno por ejemplo login:
+Para ejecutar específicamente uno por ejemplo properties:
 
-- npx playwright test tests/login.spec.ts
+- npx cucumber-js features/properties.feature 
 
 Para forzar evidencia nuevamente de un escenario ya registrado:
 $env:RECAPTURAR_EVIDENCIAS='true'
