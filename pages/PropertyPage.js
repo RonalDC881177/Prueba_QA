@@ -1,4 +1,5 @@
 const path = require('path');
+const { expect } = require('@playwright/test');
 
 class PropertyPage {
 
@@ -80,6 +81,14 @@ class PropertyPage {
     async goToPortal() {
         await this.page.goto(
             'https://room-rent.xyz/portal/'
+        );
+
+        await this.page.waitForLoadState('networkidle');
+    }
+
+    async goToProperties() {
+        await this.page.goto(
+            'https://room-rent.xyz/portal/properties'
         );
 
         await this.page.waitForLoadState('networkidle');
@@ -225,15 +234,21 @@ class PropertyPage {
     }
 
     async openPropertyForEdit(propertyName) {
-        await this.page.getByRole('heading', {
+    const property = this.page
+        .getByRole('heading', {
             name: propertyName,
             exact: true
-        }).click();
+        })
+        .first();
 
-        await this.page.getByRole('button', {
-            name: 'Editar'
-        }).nth(2).click();
-    }
+    await expect(property).toBeVisible();
+
+    const propertyCard = property.locator('xpath=ancestor::article');
+
+    await propertyCard
+        .getByRole('button', { name: 'Editar' })
+        .click();
+}
 
     async updateBedrooms(bedrooms) {
         const bedroomsInput = this.page.getByPlaceholder('75');

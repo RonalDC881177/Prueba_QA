@@ -14,5 +14,5 @@ Feature: Edicion de propiedades
     And elimina las fotografías existentes
     And carga nuevas fotografías
     And guarda los cambios
-    Then la vivienda debe mostrar las habitaciones "80"
+    Then la vivienda debe mostrar las habitaciones "3"
     And la vivienda debe mostrar el precio "2000000"

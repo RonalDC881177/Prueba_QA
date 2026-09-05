@@ -5,13 +5,6 @@ const PropertyPage = require('../pages/PropertyPage');
 
 When('selecciona la opción "Mis inmuebles"', async function () {
     await this.propertyPage.goToMyProperties();
-
-    await expect(
-        this.page.getByRole('heading', {
-            name: 'Casa en Arriendo',
-            exact: true
-        })
-    ).toBeVisible();
 });
 
 When('selecciona la vivienda {string} para editar', async function (propertyName) {
