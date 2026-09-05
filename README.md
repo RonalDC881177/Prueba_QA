@@ -47,3 +47,13 @@ Para forzar evidencia nuevamente de un escenario ya registrado:
 $env:RECAPTURAR_EVIDENCIAS='true'
 npm.cmd test
 
+
+para establecer el usuario y la contraseña a usar:
+
+$env:ARRENDADOR_USER="RONAL"                                                          
+$env:ARRENDADOR_PASSWORD="Rdc123654"
+
+para ejecutar las pruebas generando un html del resultado.
+npx cucumber-js --format progress --format html:artifacts/cucumber-report.html
+para ejecutar el resultado del artefacto generado de las pruebas
+start artifacts\cucumber-report.html
