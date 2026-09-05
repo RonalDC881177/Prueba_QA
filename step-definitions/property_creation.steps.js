@@ -14,39 +14,84 @@ Given('el arrendador inicia sesión en RoomRent', async function () {
 
     if (!username || !password) {
         throw new Error(
-            'Faltan ARRENDADOR_USER y ARRENDADOR_PASSWORD en las variables de entorno.'
+            'Debe configurar ARRENDADOR_USER y ARRENDADOR_PASSWORD'
         );
     }
 
-    await this.loginPage.login(username, password);
+    await this.loginPage.login(
+        username,
+        password
+    );
 
-    await expect(this.page).not.toHaveURL(/\/login/);
+    await expect(
+        this.page.getByRole('link', {
+            name: 'Panel Arrendador'
+        })
+    ).toBeVisible();
 });
 
 When('accede al panel de arrendador', async function () {
 
     await this.propertyPage.goToLandlordPanel();
+
+    await expect(
+        this.page.getByText('¿Qué quieres hacer hoy?', {
+            exact: true
+        })
+    ).toBeVisible();
 });
 
 When('selecciona la opción "Publicar nuevo"', async function () {
 
     await this.propertyPage.goToPublishProperty();
+
+    await expect(
+    this.page.getByRole('heading', {
+        name: 'Publicar inmueble',
+        exact: true
+    })
+).toBeVisible();
 });
 
-When('diligencia los datos de la propiedad', async function () {
+When('selecciona el tipo de inmueble "Casa"', async function () {
 
-    // Lo implementaremos después de inspeccionar
-    // los campos reales del formulario.
+    await this.propertyPage.selectHouse();
+});
+
+When('diligencia los datos básicos del inmueble', async function () {
+
+    await this.propertyPage.fillBasicData();
+});
+
+When('diligencia las características del inmueble', async function () {
+
+    await this.propertyPage.fillCharacteristics();
+});
+
+When('carga las fotografías del inmueble', async function () {
+
+    await this.propertyPage.uploadPropertyImages();
+});
+
+When('diligencia la información de la publicación', async function () {
+
+    await this.propertyPage.fillPublicationData();
+});
+
+When('configura las reglas del inmueble', async function () {
+
+    await this.propertyPage.configureRules();
 });
 
 When('publica el inmueble', async function () {
 
-    // Lo implementaremos después de inspeccionar
-    // el botón y las validaciones reales.
+    await this.propertyPage.publish();
 });
 
 Then('debería visualizar la propiedad publicada', async function () {
 
-    // Lo implementaremos después de conocer
-    // el resultado real de la publicación.
+    await expect(
+        this.page.locator('body')
+    ).toContainText('Casa');
+
 });
