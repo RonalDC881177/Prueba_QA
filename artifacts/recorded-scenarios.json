@@ -1,0 +1,54 @@
+{
+  "scenarios": {
+    "32a33ab9ed3a833df063cbfdac03d32d4f7407e5823e9352a2100b75349584fa": {
+      "feature": "features\\login.feature",
+      "scenario": "Login exitoso",
+      "recordedAt": "2026-09-05T06:24:19.172Z"
+    },
+    "342cc9d4676c123bba36013cadbe9cd9f68d1654aa51365b7a1c585e37ece26e": {
+      "feature": "features\\login.feature",
+      "scenario": "Login con contraseña incorrecta",
+      "recordedAt": "2026-09-05T06:24:24.870Z"
+    },
+    "ba490fe17ae6b88798c1b738a21d0899a15f8c86d8a3af5c36d6d66487c56875": {
+      "feature": "features\\login.feature",
+      "scenario": "Login con campos vacíos",
+      "recordedAt": "2026-09-05T06:24:29.385Z"
+    },
+    "a6ba1f070196f20505265094b769b0df290aaca21eba2f3e1b46d1dc2077abbd": {
+      "feature": "features\\properties.feature",
+      "scenario": "Navegar al listado de propiedades",
+      "recordedAt": "2026-09-05T06:24:34.516Z"
+    },
+    "911fbb0c9f310db45a0087955a1d79554fa18b3da2f8de2986d5269ec2a408f8": {
+      "feature": "features\\properties.feature",
+      "scenario": "Mostrar mensaje cuando no existen propiedades",
+      "recordedAt": "2026-09-05T06:24:44.821Z"
+    },
+    "1bc7a142bb91d1b0ec409f7ce378b994995a9ddf006368048be6502934af9c3f": {
+      "feature": "features\\property_creation.feature",
+      "scenario": "Crear una propiedad exitosamente",
+      "recordedAt": "2026-09-05T06:25:04.946Z"
+    },
+    "783ebcf8044879680e5c0e91f657bb85c706f6993127e866cf9ea22acf79c7ff": {
+      "feature": "features\\property_edit.feature",
+      "scenario": "Editar una vivienda publicada correctamente",
+      "recordedAt": "2026-09-05T06:25:16.524Z"
+    },
+    "1acdad442642a9506c05e5a54606cb162c5affd57a7a94c575bc2524d2e9d33c": {
+      "feature": "features\\register.feature",
+      "scenario": "Registro con correo ya registrado",
+      "recordedAt": "2026-09-05T06:25:24.404Z"
+    },
+    "482d9f36de5047098c0c6de29272874304c9a874ba17133b850d2f5904543525": {
+      "feature": "features\\registration.feature",
+      "scenario": "Registro exitoso de un usuario nuevo",
+      "recordedAt": "2026-09-05T06:25:31.946Z"
+    },
+    "cb3ab59f53cea8abe6923c002c08868084b7ad5646db81dedeeb55f38a09225b": {
+      "feature": "features\\registration.feature",
+      "scenario": "Registro con correo ya registrado",
+      "recordedAt": "2026-09-05T06:25:39.586Z"
+    }
+  }
+}

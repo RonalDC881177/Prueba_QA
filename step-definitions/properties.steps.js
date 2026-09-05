@@ -16,20 +16,15 @@ When('selecciona la opción "Propiedades"', async function () {
 });
 
 Then('debería visualizar la página de propiedades', async function () {
-
     await expect(this.page).toHaveURL(
         'https://room-rent.xyz/portal/properties'
     );
 
-    await expect(
-        this.page.getByText('INMUEBLES', { exact: true })
-    ).toBeVisible();
-
-    await expect(
-        this.page.getByText('Explora los inmuebles disponibles', { exact: true })
-    ).toBeVisible();
+    await expect(this.page.locator('body')).toContainText('Inmuebles');
+    await expect(this.page.locator('body')).toContainText(
+        'Explora los inmuebles disponibles'
+    );
 });
-
 Then('debería visualizar el mensaje de que no existen propiedades', async function () {
 
     const emptyMessage = this.page.getByText(

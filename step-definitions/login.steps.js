@@ -33,5 +33,9 @@ When('intenta iniciar sesión sin ingresar credenciales', async function () {
 });
 
 Then('debería ver validaciones de campos obligatorios', async function () {
-    await expect(this.page.locator('text=Incorrect username or password')).toBeVisible();
+    const username = this.page.locator('input[name="username"]');
+    const password = this.page.locator('input[name="password"]');
+
+    await expect(username).toHaveAttribute('required', '');
+    await expect(password).toHaveAttribute('required', '');
 });
